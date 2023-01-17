@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63020C32297694290002F133 /* AddCardViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C31297694290002F133 /* AddCardViewButton.swift */; };
+		63020C32297694290002F133 /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C31297694290002F133 /* AddCardButton.swift */; };
+		63020C342976BC4A0002F133 /* AddCardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C332976BC4A0002F133 /* AddCardFormView.swift */; };
 		63E927E2297526DC00A19263 /* SpedingTrackerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E927E1297526DC00A19263 /* SpedingTrackerAppApp.swift */; };
 		63E927E4297526DC00A19263 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E927E3297526DC00A19263 /* ContentView.swift */; };
 		63E927E6297526E100A19263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E927E5297526E100A19263 /* Assets.xcassets */; };
@@ -19,7 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63020C31297694290002F133 /* AddCardViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewButton.swift; sourceTree = "<group>"; };
+		63020C31297694290002F133 /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
+		63020C332976BC4A0002F133 /* AddCardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardFormView.swift; sourceTree = "<group>"; };
 		63E927DE297526DC00A19263 /* SpedingTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpedingTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E927E1297526DC00A19263 /* SpedingTrackerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpedingTrackerAppApp.swift; sourceTree = "<group>"; };
 		63E927E3297526DC00A19263 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,8 +118,9 @@
 		63E927FC297539E500A19263 /* MainSubViews */ = {
 			isa = PBXGroup;
 			children = (
+				63020C31297694290002F133 /* AddCardButton.swift */,
+				63020C332976BC4A0002F133 /* AddCardFormView.swift */,
 				63E927FD29753A0500A19263 /* CreditCardView.swift */,
-				63020C31297694290002F133 /* AddCardViewButton.swift */,
 			);
 			path = MainSubViews;
 			sourceTree = "<group>";
@@ -194,8 +197,9 @@
 			files = (
 				63E927EB297526E100A19263 /* Persistence.swift in Sources */,
 				63E927EE297526E100A19263 /* SpedingTrackerApp.xcdatamodeld in Sources */,
+				63020C342976BC4A0002F133 /* AddCardFormView.swift in Sources */,
 				63E927E4297526DC00A19263 /* ContentView.swift in Sources */,
-				63020C32297694290002F133 /* AddCardViewButton.swift in Sources */,
+				63020C32297694290002F133 /* AddCardButton.swift in Sources */,
 				63E927FA2975288000A19263 /* MainView.swift in Sources */,
 				63E927E2297526DC00A19263 /* SpedingTrackerAppApp.swift in Sources */,
 				63E927FE29753A0500A19263 /* CreditCardView.swift in Sources */,

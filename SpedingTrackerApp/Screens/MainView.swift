@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     
+    @State private var addCardFormShown = false
+    
     var body: some View {
         NavigationView {
-            
             ScrollView {
-                
                 TabView {
                     ForEach(0..<5) { _ in
                         CreditCardView()
@@ -23,9 +23,16 @@ struct MainView: View {
                 .frame(height: 280)
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
+                
+                Spacer()
+                    .fullScreenCover(isPresented: $addCardFormShown) {
+                        //onDismiss()
+                    } content: {
+                        AddCardFormView()
+                    }
             }
             .navigationTitle("Credit Cards")
-            .navigationBarItems(trailing: AddCardViewButton())
+            .navigationBarItems(trailing: AddCardButton(isPresented: $addCardFormShown))
         }
     }
 }
