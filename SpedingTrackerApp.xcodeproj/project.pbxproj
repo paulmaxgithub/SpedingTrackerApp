@@ -11,6 +11,7 @@
 		63020C342976BC4A0002F133 /* AddCardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C332976BC4A0002F133 /* AddCardFormView.swift */; };
 		63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF322977BDF4008F1C69 /* AddItemButton.swift */; };
 		63C1CF392977C7AE008F1C69 /* DeleteAllButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */; };
+		63C1CF3C2977F395008F1C69 /* UIColor+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */; };
 		63E927E2297526DC00A19263 /* SpedingTrackerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E927E1297526DC00A19263 /* SpedingTrackerAppApp.swift */; };
 		63E927E4297526DC00A19263 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E927E3297526DC00A19263 /* ContentView.swift */; };
 		63E927E6297526E100A19263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E927E5297526E100A19263 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		63020C332976BC4A0002F133 /* AddCardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardFormView.swift; sourceTree = "<group>"; };
 		63C1CF322977BDF4008F1C69 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
 		63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllButton.swift; sourceTree = "<group>"; };
+		63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+EXT.swift"; sourceTree = "<group>"; };
 		63E927DE297526DC00A19263 /* SpedingTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpedingTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E927E1297526DC00A19263 /* SpedingTrackerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpedingTrackerAppApp.swift; sourceTree = "<group>"; };
 		63E927E3297526DC00A19263 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63C1CF3A2977F372008F1C69 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		63E927D5297526DC00A19263 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +77,7 @@
 		63E927E0297526DC00A19263 /* SpedingTrackerApp */ = {
 			isa = PBXGroup;
 			children = (
+				63C1CF3A2977F372008F1C69 /* Extensions */,
 				63E927F42975281200A19263 /* Main */,
 				63E927F62975285B00A19263 /* Screens */,
 				63E927F52975284C00A19263 /* DB */,
@@ -125,8 +136,8 @@
 				63020C31297694290002F133 /* AddCardButton.swift */,
 				63C1CF322977BDF4008F1C69 /* AddItemButton.swift */,
 				63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */,
-				63020C332976BC4A0002F133 /* AddCardFormView.swift */,
 				63E927FD29753A0500A19263 /* CreditCardView.swift */,
+				63020C332976BC4A0002F133 /* AddCardFormView.swift */,
 			);
 			path = MainSubViews;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 				63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */,
 				63E927FA2975288000A19263 /* MainView.swift in Sources */,
 				63E927E2297526DC00A19263 /* SpedingTrackerAppApp.swift in Sources */,
+				63C1CF3C2977F395008F1C69 /* UIColor+EXT.swift in Sources */,
 				63E927FE29753A0500A19263 /* CreditCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

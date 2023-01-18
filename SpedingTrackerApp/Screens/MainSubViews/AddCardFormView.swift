@@ -14,6 +14,7 @@ fileprivate enum CardType: String, CaseIterable {
 struct AddCardFormView: View {
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name       = ""
     @State private var cardNumber = ""
@@ -54,12 +55,33 @@ struct AddCardFormView: View {
                 }
             }
             .navigationTitle("Add Credit Card")
-            .navigationBarItems(leading: Button(action: {
-                dismiss()
-            }, label: {
-                Text("Cancel")
-            }))
+            .navigationBarItems(leading: cancelButton, trailing: saveButton)
         }
+    }
+    
+    private var cancelButton: some View {
+        Button(action: {
+            dismiss()
+        }, label: {
+            Text("Cancel")
+        })
+    }
+    
+    private var saveButton: some View {
+        Button(action: {
+            let card = Card(context: viewContext)
+            card.name       = name
+            card.number     = cardNumber
+            card.limit      = Int32(cardLimit) ?? 0
+            card.expMonth   = Int16(month)
+            card.expYear    = Int16(year)
+            card.color      = UIColor(color).encode()
+            card.timestamp  = Date()
+            try? viewContext.save()
+            dismiss()
+        }, label: {
+            Text("Save")
+        })
     }
 }
 
