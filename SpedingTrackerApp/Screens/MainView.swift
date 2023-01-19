@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Card.timestamp, ascending: true)],
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Card.timestamp, ascending: false)],
                   animation: .default) private var cards: FetchedResults<Card>
     
     @State private var addCardFormShown = false
@@ -31,18 +31,12 @@ struct MainView: View {
                 } else {
                     EmptyPromptView(isPresented: $addCardFormShown)
                 }
-                
-                Spacer()
-                    .fullScreenCover(isPresented: $addCardFormShown) {
-                        //onDismiss()
-                    } content: {
-                        AddCardFormView()
-                    }
             }
             .navigationTitle("Credit Cards")
             .navigationBarItems(trailing: HStack {
                 if !cards.isEmpty { AddCardButton(isPresented: $addCardFormShown) } })
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
+            .fullScreenCover(isPresented: $addCardFormShown,  content: { AddCardFormView() })
         }
     }
 }

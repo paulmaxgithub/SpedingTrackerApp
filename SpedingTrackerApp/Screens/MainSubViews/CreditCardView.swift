@@ -12,6 +12,9 @@ struct CreditCardView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var shouldShowActionSheet = false
+    @State private var shouldShowEditForm = false
+    
+    @State var refreshID = UUID()
     
     let card: Card
     
@@ -36,31 +39,33 @@ struct CreditCardView: View {
                         .font(.system(size: 28, weight: .bold))
                 }
                 .actionSheet(isPresented: $shouldShowActionSheet) {
-                    .init(title: Text(card.name ?? ""), message: Text("Options"),
-                          buttons: [
-                            .destructive(Text("Delete Card"), action: { deleteCard() }),
-                            .cancel()
-                          ])
+                    .init(title: Text(card.name ?? "NO NAME"), buttons: [
+                        .default(Text("Edit"), action: { shouldShowEditForm.toggle() }),
+                        .destructive(Text("Delete Card"), action: { deleteCard() }), .cancel()])
                 }
             }
             
             HStack {
-                Image("visa_icon")
+                let imageName = card.type?.lowercased() ?? ""
+                Image("\(imageName)_icon")
                     .resizable()
                     .scaledToFit()
                     .frame(height: 40)
                     .clipped()
                 Spacer()
-                Text("Balance: $100,000")
+                Text("Balance: $10,000")
                     .font(.system(size: 18, weight: .semibold))
             }
             
             Text(card.number ?? "NO NUMBER")
             
-            Text("Credit Card Limit: $\((card.limit))")
-            
             HStack {
+                Text("Credit Card Limit: $\((card.limit))")
                 Spacer()
+                VStack {
+                    Text("Valid Thru")
+                    Text("\(String(format: "%02d", card.expMonth + 1))/\(String(card.expYear % 2000))")
+                }
             }
         }
         .padding()
@@ -82,5 +87,7 @@ struct CreditCardView: View {
         
         .padding(.horizontal)
         .aspectRatio(1.586, contentMode: .fit)
+        
+        .fullScreenCover(isPresented: $shouldShowEditForm, content: { AddCardFormView(card) })
     }
 }

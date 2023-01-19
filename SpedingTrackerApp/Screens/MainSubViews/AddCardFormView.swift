@@ -26,6 +26,19 @@ struct AddCardFormView: View {
     
     @State private var color: Color = .blue
     
+    let card: Card?
+    init(_ card: Card? = nil) {
+        self.card = card
+        
+        _name       = State(initialValue: card?.name ?? "")
+        _cardNumber = State(initialValue: card?.number ?? "")
+        if let limit = card?.limit { _cardLimit  = State(initialValue: String(limit)) }
+        _cardType   = State(initialValue: CardType(rawValue: (card?.type) ?? CardType.Visa.rawValue) ?? .Visa)
+        _month      = State(initialValue: Int(card?.expMonth ?? 1))
+        _year       = State(initialValue: Int(card?.expYear ?? Int16(Calendar.current.component(.year, from: Date()))))
+        _color      = State(initialValue: Color(UIColor.color(data: card?.color ?? Data()) ?? .blue))
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -54,7 +67,7 @@ struct AddCardFormView: View {
                     ColorPicker("Color", selection: $color)
                 }
             }
-            .navigationTitle("Add Credit Card")
+            .navigationTitle(card != nil ? "Edit Credit Card" : "Add Credit Card")
             .navigationBarItems(leading: cancelButton, trailing: saveButton)
         }
     }
@@ -69,8 +82,9 @@ struct AddCardFormView: View {
     
     private var saveButton: some View {
         Button(action: {
-            let card = Card(context: viewContext)
+            let card = card != nil ? card! : Card(context: viewContext)
             card.name       = name
+            card.type       = cardType.rawValue
             card.number     = cardNumber
             card.limit      = Int32(cardLimit) ?? 0
             card.expMonth   = Int16(month)
