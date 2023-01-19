@@ -9,14 +9,40 @@ import SwiftUI
 
 struct CreditCardView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var shouldShowActionSheet = false
+    
     let card: Card
+    
+    private func deleteCard() {
+        viewContext.delete(card)
+        try? viewContext.save()
+    }
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 12) {
             
-            Text(card.name ?? "NO NAME")
-                .font(.system(size: 24, weight: .semibold))
+            HStack {
+                Text(card.name ?? "NO NAME")
+                    .font(.system(size: 24, weight: .semibold))
+                    .lineLimit(1)
+                Spacer()
+                Button {
+                    shouldShowActionSheet.toggle()
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .font(.system(size: 28, weight: .bold))
+                }
+                .actionSheet(isPresented: $shouldShowActionSheet) {
+                    .init(title: Text(card.name ?? ""), message: Text("Options"),
+                          buttons: [
+                            .destructive(Text("Delete Card"), action: { deleteCard() }),
+                            .cancel()
+                          ])
+                }
+            }
             
             HStack {
                 Image("visa_icon")

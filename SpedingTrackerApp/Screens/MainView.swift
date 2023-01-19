@@ -11,8 +11,7 @@ struct MainView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Card.timestamp, ascending: true)],
-                  animation: .default)
-    private var cards: FetchedResults<Card>
+                  animation: .default) private var cards: FetchedResults<Card>
     
     @State private var addCardFormShown = false
     
@@ -29,6 +28,8 @@ struct MainView: View {
                     .frame(height: 280)
                     .tabViewStyle(.page(indexDisplayMode: .always))
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
+                } else {
+                    EmptyPromptView(isPresented: $addCardFormShown)
                 }
                 
                 Spacer()
@@ -39,7 +40,8 @@ struct MainView: View {
                     }
             }
             .navigationTitle("Credit Cards")
-            .navigationBarItems(trailing: AddCardButton(isPresented: $addCardFormShown))
+            .navigationBarItems(trailing: HStack {
+                if !cards.isEmpty { AddCardButton(isPresented: $addCardFormShown) } })
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
         }
     }

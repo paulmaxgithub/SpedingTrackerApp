@@ -17,8 +17,8 @@ struct AddCardButton: View {
         }, label: {
             Text("+ Card")
                 .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                .foregroundColor(.white)
-                .background(.black)
+                .foregroundColor(Color(.systemBackground))
+                .background(Color(.label))
                 .font(.system(size: 16, weight: .bold))
                 .cornerRadius(5)
         })
