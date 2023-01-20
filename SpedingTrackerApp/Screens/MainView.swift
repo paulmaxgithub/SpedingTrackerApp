@@ -14,6 +14,7 @@ struct MainView: View {
                   animation: .default) private var cards: FetchedResults<Card>
     
     @State private var addCardFormShown = false
+    @State private var addTransactionFormShown = false
     
     var body: some View {
         NavigationView {
@@ -28,6 +29,8 @@ struct MainView: View {
                     .frame(height: 280)
                     .tabViewStyle(.page(indexDisplayMode: .always))
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    
+                    EmptyPromtTransactionView(isPresented: $addTransactionFormShown)
                 } else {
                     EmptyPromptView(isPresented: $addCardFormShown)
                 }
@@ -37,6 +40,7 @@ struct MainView: View {
                 if !cards.isEmpty { AddCardButton(isPresented: $addCardFormShown) } })
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
             .fullScreenCover(isPresented: $addCardFormShown,  content: { AddCardFormView() })
+            .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionView() }
         }
     }
 }

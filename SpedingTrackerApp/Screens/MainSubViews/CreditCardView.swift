@@ -46,7 +46,7 @@ struct CreditCardView: View {
             }
             
             HStack {
-                let imageName = card.type?.lowercased() ?? ""
+                let imageName = card.type?.lowercased() ?? "visa"
                 Image("\(imageName)_icon")
                     .resizable()
                     .scaledToFit()
@@ -57,14 +57,14 @@ struct CreditCardView: View {
                     .font(.system(size: 18, weight: .semibold))
             }
             
-            Text(card.number ?? "NO NUMBER")
+            Text(card.number ?? "**** **** **** ****")
             
             HStack {
                 Text("Credit Card Limit: $\((card.limit))")
                 Spacer()
                 VStack {
                     Text("Valid Thru")
-                    Text("\(String(format: "%02d", card.expMonth + 1))/\(String(card.expYear % 2000))")
+                    Text("\(String(format: "%02d", card.expMonth))/\(String(card.expYear % 2000))")
                 }
             }
         }

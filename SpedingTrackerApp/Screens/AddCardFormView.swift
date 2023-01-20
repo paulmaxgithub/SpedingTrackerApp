@@ -98,9 +98,3 @@ struct AddCardFormView: View {
         })
     }
 }
-
-struct AddCardFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddCardFormView()
-    }
-}

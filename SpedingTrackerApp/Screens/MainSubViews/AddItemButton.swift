@@ -13,6 +13,8 @@ struct AddItemButton: View {
             withAnimation {
                 let viewContext = PersistenceController.shared.container.viewContext
                 let card = Card(context: viewContext)
+                card.expMonth = 1
+                card.expYear = Int16(Calendar.current.component(.year, from: Date()))
                 card.timestamp = Date()
                 do {
                     try viewContext.save()
