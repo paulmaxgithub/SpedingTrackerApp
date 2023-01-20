@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTransactionFormView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name     = ""
     @State private var amount   = ""
@@ -24,6 +25,7 @@ struct AddTransactionFormView: View {
                 Section("INFORMATION") {
                     TextField("Name", text: $name)
                     TextField("Amount", text: $amount)
+                        .keyboardType(.numberPad)
                     DatePicker("Date", selection: $date, displayedComponents: .date)
                     NavigationLink(destination: { Text("MANY").navigationTitle("MANY") }, label: { Text("Many to Many") })
                 }
@@ -58,7 +60,13 @@ struct AddTransactionFormView: View {
     
     private var saveButton: some View {
         Button {
-            //
+            let transaction = CardTransaction(context: viewContext)
+            transaction.name = name
+            transaction.amount = Float(amount) ?? 0
+            transaction.timestamp = date
+            transaction.photoData = photoData
+            try? viewContext.save()
+            dismiss()
         } label: {
             Text("Save")
         }

@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct PhotoPickerView: UIViewControllerRepresentable {
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        
-        private let parent: PhotoPickerView
-        init(parent: PhotoPickerView) { self.parent = parent }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            let image = info[.originalImage] as? UIImage
-            let imageData = image?.jpegData(compressionQuality: 1)
-            parent.photoData = imageData
-            picker.dismiss(animated: true)
-        }
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            //TODO: ???
-        }
+    private let parent: PhotoPickerView
+    init(parent: PhotoPickerView) { self.parent = parent }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        let imageData = image?.jpegData(compressionQuality: 1)
+        parent.photoData = imageData
+        picker.dismiss(animated: true)
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+}
+
+struct PhotoPickerView: UIViewControllerRepresentable {
     
     @Binding var photoData: Data?
     

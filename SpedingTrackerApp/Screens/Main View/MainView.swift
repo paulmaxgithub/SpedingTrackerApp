@@ -9,9 +9,13 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Card.timestamp, ascending: false)],
-                  animation: .default) private var cards: FetchedResults<Card>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(
+        keyPath: \Card.timestamp, ascending: false)], animation: .default)
+    private var cards: FetchedResults<Card>
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(
+        keyPath: \CardTransaction.timestamp, ascending: false)],animation: .default)
+    private var transactions: FetchedResults<CardTransaction>
     
     @State private var addCardFormShown = false
     @State private var addTransactionFormShown = false
@@ -21,8 +25,8 @@ struct MainView: View {
             ScrollView {
                 if !(cards.isEmpty) {
                     TabView {
-                        ForEach(cards) { card in
-                            CreditCardView(card: card)
+                        ForEach(cards) { _card in
+                            CreditCardView(card: _card)
                                 .padding(.bottom, 50)
                         }
                     }
@@ -31,6 +35,12 @@ struct MainView: View {
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
                     
                     EmptyPromtTransactionView(isPresented: $addTransactionFormShown)
+                    
+                    if !(transactions.isEmpty) {
+                        ForEach(transactions) { _transaction in
+                            TransactionView(transaction: _transaction)       
+                        }
+                    }
                 } else {
                     EmptyPromptView(isPresented: $addCardFormShown)
                 }

@@ -14,14 +14,13 @@ struct EmptyPromtTransactionView: View {
     var body: some View {
         
         VStack {
-            Text("Get started by adding your first transaction")
+            Text("Get started by adding your transaction")
                 .padding(.horizontal, 48)
-                .padding(.vertical)
                 .multilineTextAlignment(.center)
             Button {
                 isPresented.toggle()
             } label: {
-                Text("+ Add Your First Card")
+                Text("+ Transaction")
                     .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
                     .foregroundColor(Color(.systemBackground))
                     .background(Color(.label))
