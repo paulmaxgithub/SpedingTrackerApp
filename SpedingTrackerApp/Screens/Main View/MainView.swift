@@ -40,7 +40,7 @@ struct MainView: View {
                 if !cards.isEmpty { AddCardButton(isPresented: $addCardFormShown) } })
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
             .fullScreenCover(isPresented: $addCardFormShown,  content: { AddCardFormView() })
-            .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionView() }
+            .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionFormView() }
         }
     }
 }

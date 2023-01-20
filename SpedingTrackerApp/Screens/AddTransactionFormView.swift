@@ -1,5 +1,5 @@
 //
-//  AddTransactionView.swift
+//  AddTransactionFormView.swift
 //  SpedingTrackerApp
 //
 //  Created by PaulmaX on 20.01.23.
@@ -7,13 +7,16 @@
 
 import SwiftUI
 
-struct AddTransactionView: View {
+struct AddTransactionFormView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @State private var name = ""
-    @State private var amount = ""
-    @State private var date = Date()
+    @State private var name     = ""
+    @State private var amount   = ""
+    @State private var date     = Date()
+    @State private var photoData: Data?
+    
+    @State private var shouldPresentPhotoPicker = false
     
     var body: some View {
         NavigationView {
@@ -27,14 +30,21 @@ struct AddTransactionView: View {
                 
                 Section("PHOTO / RECEIPT") {
                     Button {
-                        //
+                        shouldPresentPhotoPicker.toggle()
                     } label: {
                         Text("Select Photo")
+                    }
+                    if let photoData = photoData, let image = UIImage.init(data: photoData) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
                     }
                 }
             }
             .navigationTitle("Add Transaction")
             .navigationBarItems(leading: cancelButton, trailing: saveButton)
+            .fullScreenCover(isPresented: $shouldPresentPhotoPicker, content: { PhotoPickerView(photoData: $photoData) })
         }
     }
     
@@ -52,6 +62,5 @@ struct AddTransactionView: View {
         } label: {
             Text("Save")
         }
-        
     }
 }
