@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CreditCardView: View {
     
@@ -87,6 +88,7 @@ struct CreditCardView: View {
     
     private func deleteCard() {
         withAnimation {
+            card.transactions?.forEach({ viewContext.delete($0 as! NSManagedObject) })
             viewContext.delete(card)
             try? viewContext.save()
         }

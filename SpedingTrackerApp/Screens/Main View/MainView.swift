@@ -13,23 +13,20 @@ struct MainView: View {
         keyPath: \Card.timestamp, ascending: false)], animation: .default)
     private var cards: FetchedResults<Card>
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(
-        keyPath: \CardTransaction.timestamp, ascending: false)],animation: .default)
-    private var transactions: FetchedResults<CardTransaction>
-    
-    @State private var addCardFormShown = false
-    @State private var addTransactionFormShown = false
+    @State private var addCardFormShown         = false
+    @State private var addTransactionFormShown  = false
+    @State private var cardSelectedIndex        = 0
     
     var body: some View {
         NavigationView {
             ScrollView {
                 if !(cards.isEmpty) {
-                    TabView {
-                        withAnimation {
-                            ForEach(cards) { _card in
-                                CreditCardView(card: _card)
-                                    .padding(.bottom, 50)
-                            }
+                    TabView(selection: $cardSelectedIndex) {
+                        ForEach(0..<cards.count) { i in
+                            let card = cards[i]
+                            CreditCardView(card: card)
+                                .padding(.bottom, 50)
+                                .tag(i)
                         }
                     }
                     .frame(height: 280)
@@ -37,12 +34,7 @@ struct MainView: View {
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
                     
                     EmptyPromtTransactionView(isPresented: $addTransactionFormShown)
-                    
-                    if !(transactions.isEmpty) {
-                        ForEach(transactions) { _transaction in
-                            CardTransactionView(transaction: _transaction)
-                        }
-                    }
+                    CardTransactionView(card: cards[cardSelectedIndex])
                 } else {
                     EmptyPromptView(isPresented: $addCardFormShown)
                 }
@@ -54,7 +46,8 @@ struct MainView: View {
             
             //FULL SCREEN COVERS
             .fullScreenCover(isPresented: $addCardFormShown,  content: { AddCardFormView() })
-            .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionFormView() }
+            .fullScreenCover(isPresented: $addTransactionFormShown) {
+                AddTransactionFormView(card: cards[cardSelectedIndex]) }
         }
     }
 }

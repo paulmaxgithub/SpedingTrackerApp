@@ -19,6 +19,8 @@ struct AddTransactionFormView: View {
     
     @State private var shouldPresentPhotoPicker = false
     
+    let card: Card
+    
     var body: some View {
         NavigationView {
             Form {
@@ -65,6 +67,7 @@ struct AddTransactionFormView: View {
             transaction.amount = Float(amount) ?? 0
             transaction.timestamp = date
             transaction.photoData = photoData
+            transaction.card = card
             try? viewContext.save()
             dismiss()
         } label: {
