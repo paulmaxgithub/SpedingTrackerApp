@@ -18,11 +18,6 @@ struct CreditCardView: View {
     
     let card: Card
     
-    private func deleteCard() {
-        viewContext.delete(card)
-        try? viewContext.save()
-    }
-    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 12) {
@@ -37,11 +32,6 @@ struct CreditCardView: View {
                 } label: {
                     Image(systemName: "ellipsis")
                         .font(.system(size: 28, weight: .bold))
-                }
-                .actionSheet(isPresented: $shouldShowActionSheet) {
-                    .init(title: Text(card.name ?? "NO NAME"), buttons: [
-                        .default(Text("Edit"), action: { shouldShowEditForm.toggle() }),
-                        .destructive(Text("Delete Card"), action: { deleteCard() }), .cancel()])
                 }
             }
             
@@ -69,7 +59,6 @@ struct CreditCardView: View {
             }
         }
         .padding()
-        
         .foregroundColor(.white)
         .background(
             VStack {
@@ -84,10 +73,22 @@ struct CreditCardView: View {
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(.black.opacity(0.5), lineWidth: 1))
         .cornerRadius(8)
         .shadow(radius: 5)
-        
         .padding(.horizontal)
         .aspectRatio(1.586, contentMode: .fit)
         
+        //ACTION SHEET & FULL SCREEN COVER
+        .actionSheet(isPresented: $shouldShowActionSheet) {
+            .init(title: Text(card.name ?? "NO NAME"), buttons: [
+                .default(Text("Edit"), action: { shouldShowEditForm.toggle() }),
+                .destructive(Text("Delete Card"), action: { deleteCard() }), .cancel()])
+        }
         .fullScreenCover(isPresented: $shouldShowEditForm, content: { AddCardFormView(card) })
+    }
+    
+    private func deleteCard() {
+        withAnimation {
+            viewContext.delete(card)
+            try? viewContext.save()
+        }
     }
 }

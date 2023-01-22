@@ -25,9 +25,11 @@ struct MainView: View {
             ScrollView {
                 if !(cards.isEmpty) {
                     TabView {
-                        ForEach(cards) { _card in
-                            CreditCardView(card: _card)
-                                .padding(.bottom, 50)
+                        withAnimation {
+                            ForEach(cards) { _card in
+                                CreditCardView(card: _card)
+                                    .padding(.bottom, 50)
+                            }
                         }
                     }
                     .frame(height: 280)
@@ -38,7 +40,7 @@ struct MainView: View {
                     
                     if !(transactions.isEmpty) {
                         ForEach(transactions) { _transaction in
-                            TransactionView(transaction: _transaction)       
+                            CardTransactionView(transaction: _transaction)
                         }
                     }
                 } else {
@@ -49,6 +51,8 @@ struct MainView: View {
             .navigationBarItems(trailing: HStack {
                 if !cards.isEmpty { AddCardButton(isPresented: $addCardFormShown) } })
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
+            
+            //FULL SCREEN COVERS
             .fullScreenCover(isPresented: $addCardFormShown,  content: { AddCardFormView() })
             .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionFormView() }
         }
