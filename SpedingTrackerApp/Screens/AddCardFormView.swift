@@ -11,6 +11,8 @@ fileprivate enum CardType: String, CaseIterable {
     case Visa, Mastercard, Discover, Citibank
 }
 
+typealias DidAddCard = ((Card) -> Void)?
+
 struct AddCardFormView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -27,8 +29,10 @@ struct AddCardFormView: View {
     @State private var color: Color = .blue
     
     let card: Card?
-    init(_ card: Card? = nil) {
+    var didAddCard: DidAddCard = nil
+    init(_ card: Card? = nil, didAddCard: DidAddCard) {
         self.card = card
+        self.didAddCard = didAddCard
         
         _name       = State(initialValue: card?.name ?? "")
         _cardNumber = State(initialValue: card?.number ?? "")
@@ -92,6 +96,8 @@ struct AddCardFormView: View {
             card.color      = UIColor(color).encode()
             card.timestamp  = Date()
             try? viewContext.save()
+            
+            didAddCard?(card)
             dismiss()
         }, label: {
             Text("Save")

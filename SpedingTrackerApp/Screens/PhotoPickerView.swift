@@ -14,7 +14,9 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
-        let imageData = image?.jpegData(compressionQuality: 1)
+        let deviceWidth = UIScreen.main.bounds.width - 32
+        let resizedImage = image?.resized(to: .init(width: deviceWidth, height: deviceWidth))
+        let imageData = resizedImage?.jpegData(compressionQuality: 0.3)
         parent.photoData = imageData
         picker.dismiss(animated: true)
     }

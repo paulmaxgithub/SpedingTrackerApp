@@ -15,26 +15,32 @@ struct MainView: View {
     
     @State private var addCardFormShown         = false
     @State private var addTransactionFormShown  = false
-    @State private var cardSelectedIndex        = 0
+    @State private var cardSelectedHash         = -1
+    
+    var currentCard: Card?
     
     var body: some View {
         NavigationView {
             ScrollView {
                 if !(cards.isEmpty) {
-                    TabView(selection: $cardSelectedIndex) {
-                        ForEach(0..<cards.count) { i in
-                            let card = cards[i]
-                            CreditCardView(card: card)
+                    TabView(selection: $cardSelectedHash) {
+                        ForEach(cards) { _card in
+                            CreditCardView(card: _card)
                                 .padding(.bottom, 50)
-                                .tag(i)
+                                .tag(_card.hash)
                         }
                     }
                     .frame(height: 280)
-                    .tabViewStyle(.page(indexDisplayMode: .always))
+                    .tabViewStyle(.page(indexDisplayMode: .automatic))
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    .onAppear(perform:  { cardSelectedHash = cards.first?.hash ?? -1 })
                     
                     EmptyPromtTransactionView(isPresented: $addTransactionFormShown)
-                    CardTransactionView(card: cards[cardSelectedIndex])
+                    
+                    if let firstIndex = cards.firstIndex(where: { $0.hash ==  cardSelectedHash }) {
+                        let card = cards[firstIndex]
+                        CardTransactionView(card: card)
+                    }
                 } else {
                     EmptyPromptView(isPresented: $addCardFormShown)
                 }
@@ -45,9 +51,14 @@ struct MainView: View {
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
             
             //FULL SCREEN COVERS
-            .fullScreenCover(isPresented: $addCardFormShown,  content: { AddCardFormView() })
+            .fullScreenCover(isPresented: $addCardFormShown,  content: {
+                AddCardFormView { cardSelectedHash = $0.hash } })
             .fullScreenCover(isPresented: $addTransactionFormShown) {
-                AddTransactionFormView(card: cards[cardSelectedIndex]) }
+                if let firstIndex = cards.firstIndex(where: { $0.hash ==  cardSelectedHash }) {
+                    let card = cards[firstIndex]
+                    AddTransactionFormView(card: card)
+                }
+            }
         }
     }
 }

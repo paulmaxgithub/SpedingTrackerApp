@@ -13,6 +13,7 @@
 		63857BB7297A41B700002EB2 /* AddTransactionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */; };
 		63857BB9297A718E00002EB2 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BB8297A718E00002EB2 /* PhotoPickerView.swift */; };
 		63857BBC297AAD4E00002EB2 /* CardTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */; };
+		63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */; };
 		63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF322977BDF4008F1C69 /* AddItemButton.swift */; };
 		63C1CF392977C7AE008F1C69 /* DeleteAllButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */; };
 		63C1CF3C2977F395008F1C69 /* UIColor+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */; };
@@ -33,6 +34,7 @@
 		63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionFormView.swift; sourceTree = "<group>"; };
 		63857BB8297A718E00002EB2 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransactionView.swift; sourceTree = "<group>"; };
+		63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+EXT.swift"; sourceTree = "<group>"; };
 		63C1CF322977BDF4008F1C69 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
 		63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllButton.swift; sourceTree = "<group>"; };
 		63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+EXT.swift"; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */,
+				63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				63857BB9297A718E00002EB2 /* PhotoPickerView.swift in Sources */,
 				63857BB5297A3BDA00002EB2 /* EmptyPromtTransactionView.swift in Sources */,
 				63020C32297694290002F133 /* AddCardButton.swift in Sources */,
+				63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */,
 				63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */,
 				63E927FA2975288000A19263 /* MainView.swift in Sources */,
 				63C1CF3F2978C07F008F1C69 /* EmptyPromptView.swift in Sources */,

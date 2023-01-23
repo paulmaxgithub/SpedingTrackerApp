@@ -83,7 +83,7 @@ struct CreditCardView: View {
                 .default(Text("Edit"), action: { shouldShowEditForm.toggle() }),
                 .destructive(Text("Delete Card"), action: { deleteCard() }), .cancel()])
         }
-        .fullScreenCover(isPresented: $shouldShowEditForm, content: { AddCardFormView(card) })
+        .fullScreenCover(isPresented: $shouldShowEditForm, content: { AddCardFormView(card, didAddCard: nil) })
     }
     
     private func deleteCard() {
