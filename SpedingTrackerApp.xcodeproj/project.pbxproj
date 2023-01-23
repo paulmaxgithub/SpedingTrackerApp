@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		63020C32297694290002F133 /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C31297694290002F133 /* AddCardButton.swift */; };
 		63020C342976BC4A0002F133 /* AddCardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C332976BC4A0002F133 /* AddCardFormView.swift */; };
-		63857BB5297A3BDA00002EB2 /* EmptyPromtTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BB4297A3BDA00002EB2 /* EmptyPromtTransactionView.swift */; };
+		63857BB5297A3BDA00002EB2 /* PromptTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BB4297A3BDA00002EB2 /* PromptTransactionView.swift */; };
 		63857BB7297A41B700002EB2 /* AddTransactionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */; };
 		63857BB9297A718E00002EB2 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BB8297A718E00002EB2 /* PhotoPickerView.swift */; };
 		63857BBC297AAD4E00002EB2 /* CardTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */; };
@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		63020C31297694290002F133 /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
 		63020C332976BC4A0002F133 /* AddCardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardFormView.swift; sourceTree = "<group>"; };
-		63857BB4297A3BDA00002EB2 /* EmptyPromtTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPromtTransactionView.swift; sourceTree = "<group>"; };
+		63857BB4297A3BDA00002EB2 /* PromptTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTransactionView.swift; sourceTree = "<group>"; };
 		63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionFormView.swift; sourceTree = "<group>"; };
 		63857BB8297A718E00002EB2 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransactionView.swift; sourceTree = "<group>"; };
@@ -158,9 +158,9 @@
 				63C1CF322977BDF4008F1C69 /* AddItemButton.swift */,
 				63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */,
 				63E927FD29753A0500A19263 /* CreditCardView.swift */,
-				63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */,
 				63C1CF3E2978C07F008F1C69 /* EmptyPromptView.swift */,
-				63857BB4297A3BDA00002EB2 /* EmptyPromtTransactionView.swift */,
+				63857BB4297A3BDA00002EB2 /* PromptTransactionView.swift */,
+				63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */,
 			);
 			path = MainSubViews;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 				63020C342976BC4A0002F133 /* AddCardFormView.swift in Sources */,
 				63C1CF392977C7AE008F1C69 /* DeleteAllButton.swift in Sources */,
 				63857BB9297A718E00002EB2 /* PhotoPickerView.swift in Sources */,
-				63857BB5297A3BDA00002EB2 /* EmptyPromtTransactionView.swift in Sources */,
+				63857BB5297A3BDA00002EB2 /* PromptTransactionView.swift in Sources */,
 				63020C32297694290002F133 /* AddCardButton.swift in Sources */,
 				63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */,
 				63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */,

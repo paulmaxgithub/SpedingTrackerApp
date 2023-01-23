@@ -14,7 +14,6 @@ struct MainView: View {
     private var cards: FetchedResults<Card>
     
     @State private var addCardFormShown         = false
-    @State private var addTransactionFormShown  = false
     @State private var cardSelectedHash         = -1
     
     var currentCard: Card?
@@ -35,11 +34,9 @@ struct MainView: View {
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
                     .onAppear(perform:  { cardSelectedHash = cards.first?.hash ?? -1 })
                     
-                    EmptyPromtTransactionView(isPresented: $addTransactionFormShown)
-                    
                     if let firstIndex = cards.firstIndex(where: { $0.hash ==  cardSelectedHash }) {
                         let card = cards[firstIndex]
-                        CardTransactionView(card: card)
+                        PromptTransactionView(card)
                     }
                 } else {
                     EmptyPromptView(isPresented: $addCardFormShown)
@@ -51,14 +48,7 @@ struct MainView: View {
             .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
             
             //FULL SCREEN COVERS
-            .fullScreenCover(isPresented: $addCardFormShown,  content: {
-                AddCardFormView { cardSelectedHash = $0.hash } })
-            .fullScreenCover(isPresented: $addTransactionFormShown) {
-                if let firstIndex = cards.firstIndex(where: { $0.hash ==  cardSelectedHash }) {
-                    let card = cards[firstIndex]
-                    AddTransactionFormView(card: card)
-                }
-            }
+            .fullScreenCover(isPresented: $addCardFormShown) { AddCardFormView { cardSelectedHash = $0.hash } }
         }
     }
 }
