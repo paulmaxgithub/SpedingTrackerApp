@@ -46,7 +46,6 @@ struct AddCardFormView: View {
     var body: some View {
         NavigationView {
             Form {
-                
                 Section("CARD INFORMATION") {
                     TextField("Name", text: $name)
                     TextField("Credit Card Number", text: $cardNumber)

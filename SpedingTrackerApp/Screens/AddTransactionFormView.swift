@@ -29,7 +29,14 @@ struct AddTransactionFormView: View {
                     TextField("Amount", text: $amount)
                         .keyboardType(.numberPad)
                     DatePicker("Date", selection: $date, displayedComponents: .date)
-                    NavigationLink(destination: { Text("MANY").navigationTitle("MANY") }, label: { Text("Many to Many") })
+                }
+                
+                Section("CATEGORIES") {
+                    NavigationLink(destination: {
+                        CategoriesListView()
+                    }, label: {
+                        Text("Select categories")
+                    })
                 }
                 
                 Section("PHOTO / RECEIPT") {
