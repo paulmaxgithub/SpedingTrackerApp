@@ -93,6 +93,7 @@ struct AddTransactionFormView: View {
             transaction.timestamp = date
             transaction.photoData = photoData
             transaction.card = card
+            transaction.categories = selectedCategories as NSSet
             try? viewContext.save()
             dismiss()
         } label: {

@@ -20,6 +20,8 @@ struct CardTransactionView: View {
     
     @State private var shouldPresentActionSheet = false
     
+    @State var refreshID = UUID()
+    
     let transaction: CardTransaction
     
     var body: some View {
@@ -41,6 +43,32 @@ struct CardTransactionView: View {
                     .padding(EdgeInsets(top: 6, leading: 8, bottom: 4, trailing: 0))
                     
                     Text(String(format: "$%.2f", transaction.amount))
+                }
+            }
+            
+            if let categories = transaction.categories as? Set<TransactionCategory> {
+                
+                let sortedByTimestampCategories = Array(categories).sorted(by: {
+                    $0.timestamp?.compare($1.timestamp ?? Date()) == .orderedDescending
+                })
+                
+                HStack {
+                    ForEach(sortedByTimestampCategories) { category in
+                        Text(category.name ?? "")
+                            .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.white)
+                            .background(
+                                HStack {
+                                    if let colorData = category.color,
+                                       let uiColor = UIColor.color(data: colorData) {
+                                        Color(uiColor)
+                                    }
+                                }
+                            )
+                            .cornerRadius(5)
+                    }
+                    Spacer()
                 }
             }
             
