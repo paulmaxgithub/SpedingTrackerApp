@@ -18,23 +18,38 @@ struct CategoriesListView: View {
     @State private var name = ""
     @State private var color: Color = .red
     
+    @Binding var selectedCategories: Set<TransactionCategory>
+    
     var body: some View {
         Form {
             Section("SELECT A CATEGORY") {
                 if !(categories.isEmpty) {
                     ForEach(categories) { category in
-                        HStack(spacing: 12) {
-                            if let colorData = category.color,
-                               let uiColor = UIColor.color(data: colorData) {
-                                let color = Color(uiColor)
-                                Spacer()
-                                    .frame(width: 30, height: 10)
-                                    .background(color)
+                        Button {
+                            if selectedCategories.contains(category) {
+                                selectedCategories.remove(category)
+                            } else {
+                                selectedCategories.insert(category)
                             }
-                            Text(category.name ?? "")
+                        } label: {
+                            HStack(spacing: 12) {
+                                if let colorData = category.color,
+                                   let uiColor = UIColor.color(data: colorData) {
+                                    let color = Color(uiColor)
+                                    Spacer()
+                                        .frame(width: 30, height: 10)
+                                        .background(color)
+                                }
+                                Text(category.name ?? "")
+                                    .foregroundColor(Color(.label))
+                                Spacer()
+                                if selectedCategories.contains(category) {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
                         }
                     }
-                    .onDelete { onDeleteCategory($0)}
+                    .onDelete { deleteCategory($0) }
                 }
             }
             
@@ -69,15 +84,8 @@ struct CategoriesListView: View {
         name = ""
     }
     
-    private func onDeleteCategory(_ indexSet: IndexSet) {
+    private func deleteCategory(_ indexSet: IndexSet) {
         indexSet.forEach { viewContext.delete(categories[$0]) }
         try? viewContext.save()
-    }
-}
-
-struct CategoriesListView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoriesListView()
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

@@ -18,6 +18,7 @@ struct AddTransactionFormView: View {
     @State private var photoData: Data?
     
     @State private var shouldPresentPhotoPicker = false
+    @State private var selectedCategories = Set<TransactionCategory>()
     
     let card: Card
     
@@ -33,10 +34,27 @@ struct AddTransactionFormView: View {
                 
                 Section("CATEGORIES") {
                     NavigationLink(destination: {
-                        CategoriesListView()
+                        CategoriesListView(selectedCategories: $selectedCategories)
                     }, label: {
                         Text("Select categories")
                     })
+                    
+                    let sortedByTimestampCategories = Array(selectedCategories).sorted(by: {
+                        $0.timestamp?.compare($1.timestamp ?? Date()) == .orderedDescending
+                    })
+                    
+                    ForEach(Array(sortedByTimestampCategories)) { category in
+                        HStack(spacing: 12) {
+                            if let colorData = category.color,
+                               let uiColor = UIColor.color(data: colorData) {
+                                let color = Color(uiColor)
+                                Spacer()
+                                    .frame(width: 30, height: 10)
+                                    .background(color)
+                            }
+                            Text(category.name ?? "")
+                        }
+                    }
                 }
                 
                 Section("PHOTO / RECEIPT") {
