@@ -44,6 +44,6 @@ struct PromptTransactionView: View {
         .font(.system(size: 15, weight: .semibold))
         
         //FULL SCREEN COVERS
-        .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionFormView(card: card) }
+        .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionFormView(card) }
     }
 }

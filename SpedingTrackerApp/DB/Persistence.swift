@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit
 
 struct PersistenceController {
     
@@ -24,5 +25,21 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        setInitialDataForTransactionCategory()
+    }
+    
+    public func setInitialDataForTransactionCategory() {
+        
+        if UserDefaults.standard.bool(forKey: "KEY") { return }
+        
+        let viewContext = container.viewContext
+        let category = TransactionCategory(context: viewContext)
+        category.name = "Office Supplies"
+        category.color = UIColor.blue.encode()
+        category.timestamp = Date()
+        
+        try? viewContext.save()
+        UserDefaults.standard.set(true, forKey: "KEY")
     }
 }

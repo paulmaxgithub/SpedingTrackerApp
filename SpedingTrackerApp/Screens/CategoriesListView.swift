@@ -85,7 +85,10 @@ struct CategoriesListView: View {
     }
     
     private func deleteCategory(_ indexSet: IndexSet) {
-        indexSet.forEach { viewContext.delete(categories[$0]) }
+        indexSet.forEach {
+            selectedCategories.remove(categories[$0])
+            viewContext.delete(categories[$0])
+        }
         try? viewContext.save()
     }
 }

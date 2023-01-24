@@ -22,6 +22,17 @@ struct AddTransactionFormView: View {
     
     let card: Card
     
+    init(_ card: Card) {
+        self.card = card
+        
+//        let request = TransactionCategory.fetchRequest()
+//        request.sortDescriptors = [.init(key: "timestamp", ascending: false)]
+//        let transactionCategoryResult = try? viewContext.fetch(request)
+//        if let first = transactionCategoryResult?.first {
+//            _selectedCategories = .init(initialValue: [first])
+//        }
+    }
+    
     var body: some View {
         NavigationView {
             Form {
