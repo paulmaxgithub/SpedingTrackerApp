@@ -18,6 +18,15 @@ struct CreditCardView: View {
     @State var refreshID = UUID()
     
     let card: Card
+    var fetchedRequest: FetchRequest<CardTransaction>
+    init(card: Card) {
+        self.card = card
+        
+        fetchedRequest = FetchRequest<CardTransaction>(
+            entity: CardTransaction.entity(),
+            sortDescriptors: [.init(key: "timestamp", ascending: false)],
+            predicate: .init(format: "card == %@", card))
+    }
     
     var body: some View {
         
@@ -44,8 +53,11 @@ struct CreditCardView: View {
                     .frame(height: 40)
                     .clipped()
                 Spacer()
-                Text("Balance: $10,000")
-                    .font(.system(size: 18, weight: .semibold))
+                
+                if let balance = fetchedRequest.wrappedValue.reduce(0, { $0 + $1.amount }) {
+                    Text("Balance: $\(String(format: "%.2f", balance))")
+                        .font(.system(size: 18, weight: .semibold))
+                }
             }
             
             Text(card.number ?? "**** **** **** ****")
