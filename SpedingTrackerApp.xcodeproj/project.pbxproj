@@ -15,7 +15,9 @@
 		63857BBC297AAD4E00002EB2 /* CardTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */; };
 		63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */; };
 		63857BC0297EA57D00002EB2 /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBF297EA57C00002EB2 /* CategoriesListView.swift */; };
+		639CA37C29812B78005B1320 /* iPad_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CA37B29812B78005B1320 /* iPad_MainView.swift */; };
 		63A05E3F298010C700AD6B2F /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A05E3E298010C700AD6B2F /* FilterSheetView.swift */; };
+		63A05E4129810B5D00AD6B2F /* DeviceIdiomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */; };
 		63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF322977BDF4008F1C69 /* AddItemButton.swift */; };
 		63C1CF392977C7AE008F1C69 /* DeleteAllButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */; };
 		63C1CF3C2977F395008F1C69 /* UIColor+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */; };
@@ -38,7 +40,9 @@
 		63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransactionView.swift; sourceTree = "<group>"; };
 		63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+EXT.swift"; sourceTree = "<group>"; };
 		63857BBF297EA57C00002EB2 /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
+		639CA37B29812B78005B1320 /* iPad_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPad_MainView.swift; sourceTree = "<group>"; };
 		63A05E3E298010C700AD6B2F /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
+		63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdiomView.swift; sourceTree = "<group>"; };
 		63C1CF322977BDF4008F1C69 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
 		63C1CF382977C7AE008F1C69 /* DeleteAllButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllButton.swift; sourceTree = "<group>"; };
 		63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+EXT.swift"; sourceTree = "<group>"; };
@@ -71,6 +75,14 @@
 				63E927FC297539E500A19263 /* MainSubViews */,
 			);
 			path = "Main View";
+			sourceTree = "<group>";
+		};
+		639CA37D29812C56005B1320 /* Main Pad View */ = {
+			isa = PBXGroup;
+			children = (
+				639CA37B29812B78005B1320 /* iPad_MainView.swift */,
+			);
+			path = "Main Pad View";
 			sourceTree = "<group>";
 		};
 		63C1CF3A2977F372008F1C69 /* Extensions */ = {
@@ -123,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				63E927E1297526DC00A19263 /* SpedingTrackerAppApp.swift */,
+				63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -139,6 +152,7 @@
 		63E927F62975285B00A19263 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				639CA37D29812C56005B1320 /* Main Pad View */,
 				63857BBA297A71A300002EB2 /* Main View */,
 				63020C332976BC4A0002F133 /* AddCardFormView.swift */,
 				63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */,
@@ -252,6 +266,8 @@
 				63857BB5297A3BDA00002EB2 /* PromptTransactionView.swift in Sources */,
 				63020C32297694290002F133 /* AddCardButton.swift in Sources */,
 				63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */,
+				639CA37C29812B78005B1320 /* iPad_MainView.swift in Sources */,
+				63A05E4129810B5D00AD6B2F /* DeviceIdiomView.swift in Sources */,
 				63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */,
 				63E927FA2975288000A19263 /* MainView.swift in Sources */,
 				63C1CF3F2978C07F008F1C69 /* EmptyPromptView.swift in Sources */,

@@ -1,14 +1,15 @@
 //
-//  MainView.swift
+//  iPad_MainView.swift
 //  SpedingTrackerApp
 //
-//  Created by PaulmaX on 16.01.23.
+//  Created by PaulmaX on 25.01.23.
 //
 
 import SwiftUI
 
-struct MainView: View {
+struct iPad_MainView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(
         keyPath: \Card.timestamp, ascending: false)], animation: .default)
     private var cards: FetchedResults<Card>
@@ -16,13 +17,11 @@ struct MainView: View {
     @State private var addCardFormShown = false
     @State private var cardSelectedHash = -1
     
-    var currentCard: Card?
-    
     var body: some View {
         NavigationView {
             ScrollView {
-                if !(cards.isEmpty) {
-                    TabView(selection: $cardSelectedHash) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
                         ForEach(cards) { _card in
                             CreditCardView(card: _card)
                                 .padding(.bottom, 50)
@@ -33,29 +32,26 @@ struct MainView: View {
                     .tabViewStyle(.page(indexDisplayMode: .automatic))
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
                     .onAppear(perform:  { cardSelectedHash = cards.first?.hash ?? -1 })
-                    
-                    if let firstIndex = cards.firstIndex(where: { $0.hash ==  cardSelectedHash }) {
-                        let card = cards[firstIndex]
-                        PromptTransactionView(card)
-                    }
-                } else {
-                    EmptyPromptView(isPresented: $addCardFormShown)
                 }
             }
             .navigationTitle("Credit Cards")
-            .navigationBarItems(trailing: HStack {
-                if !cards.isEmpty { AddCardButton(isPresented: $addCardFormShown) } })
-            .navigationBarItems(leading: HStack { AddItemButton(); DeleteAllButton(cards) })
+            .navigationBarItems(trailing: AddCardButton(isPresented: $addCardFormShown))
             
-            //FULL SCREEN COVERS
-            .fullScreenCover(isPresented: $addCardFormShown) { AddCardFormView { cardSelectedHash = $0.hash } }
+            //SHEET
+            .sheet(isPresented: $addCardFormShown, content: { AddCardFormView { cardSelectedHash = $0.hash } })
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct MainPadDeviceView_Previews: PreviewProvider {
     static var previews: some View {
+        
         let viewContext = PersistenceController.shared.container.viewContext
-        MainView().environment(\.managedObjectContext, viewContext)
+        iPad_MainView()
+            .environment(\.managedObjectContext, viewContext)
+            .previewDevice(PreviewDevice(rawValue: "iPad Pro (9.7-inch)"))
+            .environment(\.horizontalSizeClass, .compact)
+            .previewInterfaceOrientation(.portrait)
     }
 }

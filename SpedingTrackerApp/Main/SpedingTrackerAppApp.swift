@@ -14,7 +14,8 @@ struct SpedingTrackerAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            DeviceIdiomView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
