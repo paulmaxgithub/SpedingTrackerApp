@@ -16,7 +16,7 @@ struct FilterSheetView: View {
         keyPath: \TransactionCategory.timestamp, ascending: false)])
     private var categories: FetchedResults<TransactionCategory>
     
-    @State var selectedCategories = Set<TransactionCategory>()
+    @State var selectedCategories: Set<TransactionCategory>
     
     let filterDidSave: ((Set<TransactionCategory>) -> Void)
     

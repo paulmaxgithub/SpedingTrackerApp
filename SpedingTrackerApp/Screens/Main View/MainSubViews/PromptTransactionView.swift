@@ -11,6 +11,7 @@ struct PromptTransactionView: View {
     
     @State private var addTransactionFormShown  = false
     @State private var shouldShowFilterSheet    = false
+    @State private var selectedCategories = Set<TransactionCategory>()
     
     let card: Card
     var fetchedRequest: FetchRequest<CardTransaction>
@@ -38,7 +39,7 @@ struct PromptTransactionView: View {
                 }
                 .padding(.horizontal)
                 
-                ForEach(fetchedRequest.wrappedValue) { transaction in
+                ForEach(filterTransactions(selectedCategories)) { transaction in
                     CardTransactionView(transaction: transaction)
                 }
             }
@@ -47,9 +48,8 @@ struct PromptTransactionView: View {
         
         //FULL SCREEN COVERS
         .fullScreenCover(isPresented: $addTransactionFormShown) { AddTransactionFormView(card) }
-        .sheet(isPresented: $shouldShowFilterSheet) { FilterSheetView { categories in
-                //
-        } }
+        .sheet(isPresented: $shouldShowFilterSheet) { FilterSheetView(selectedCategories: selectedCategories,
+                                                                      filterDidSave: { selectedCategories = $0 }) }
     }
     
     private var addTransactionButton: some View {
@@ -73,6 +73,24 @@ struct PromptTransactionView: View {
                 .foregroundColor(Color(.systemBackground))
                 .background(Color(.label))
                 .cornerRadius(5)
+        }
+    }
+
+    private func filterTransactions(_ selectedCategories: Set<TransactionCategory>) -> [CardTransaction] {
+        
+        if selectedCategories.isEmpty { return Array(fetchedRequest.wrappedValue) }
+        
+        return fetchedRequest.wrappedValue.filter { transaction in
+            
+            var shouldKeep = false
+            
+            if let categories = transaction.categories as? Set<TransactionCategory> {
+                categories.forEach { category in
+                    if selectedCategories.contains(category) { shouldKeep = true }
+                }
+            }
+            
+            return shouldKeep
         }
     }
 }
