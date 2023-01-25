@@ -24,15 +24,13 @@ struct iPad_MainView: View {
                     HStack {
                         ForEach(cards) { _card in
                             CreditCardView(card: _card)
-                                .padding(.bottom, 50)
                                 .tag(_card.hash)
                         }
                     }
-                    .frame(height: 280)
-                    .tabViewStyle(.page(indexDisplayMode: .automatic))
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
                     .onAppear(perform:  { cardSelectedHash = cards.first?.hash ?? -1 })
                 }
+                
+                TransactionsGridView()
             }
             .navigationTitle("Credit Cards")
             .navigationBarItems(trailing: AddCardButton(isPresented: $addCardFormShown))

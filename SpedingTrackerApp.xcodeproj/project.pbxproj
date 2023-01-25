@@ -16,6 +16,7 @@
 		63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */; };
 		63857BC0297EA57D00002EB2 /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBF297EA57C00002EB2 /* CategoriesListView.swift */; };
 		639CA37C29812B78005B1320 /* iPad_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CA37B29812B78005B1320 /* iPad_MainView.swift */; };
+		639CA38029815401005B1320 /* TransactionsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CA37F29815401005B1320 /* TransactionsGridView.swift */; };
 		63A05E3F298010C700AD6B2F /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A05E3E298010C700AD6B2F /* FilterSheetView.swift */; };
 		63A05E4129810B5D00AD6B2F /* DeviceIdiomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */; };
 		63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF322977BDF4008F1C69 /* AddItemButton.swift */; };
@@ -41,6 +42,7 @@
 		63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+EXT.swift"; sourceTree = "<group>"; };
 		63857BBF297EA57C00002EB2 /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
 		639CA37B29812B78005B1320 /* iPad_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPad_MainView.swift; sourceTree = "<group>"; };
+		639CA37F29815401005B1320 /* TransactionsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsGridView.swift; sourceTree = "<group>"; };
 		63A05E3E298010C700AD6B2F /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
 		63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdiomView.swift; sourceTree = "<group>"; };
 		63C1CF322977BDF4008F1C69 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
@@ -72,7 +74,12 @@
 			isa = PBXGroup;
 			children = (
 				63E927F92975288000A19263 /* MainView.swift */,
-				63E927FC297539E500A19263 /* MainSubViews */,
+				63E927FC297539E500A19263 /* Main Subviews */,
+				63020C332976BC4A0002F133 /* AddCardFormView.swift */,
+				63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */,
+				63857BBF297EA57C00002EB2 /* CategoriesListView.swift */,
+				63A05E3E298010C700AD6B2F /* FilterSheetView.swift */,
+				63857BB8297A718E00002EB2 /* PhotoPickerView.swift */,
 			);
 			path = "Main View";
 			sourceTree = "<group>";
@@ -81,8 +88,33 @@
 			isa = PBXGroup;
 			children = (
 				639CA37B29812B78005B1320 /* iPad_MainView.swift */,
+				639CA37E2981536E005B1320 /* Pad Main Subviews */,
 			);
 			path = "Main Pad View";
+			sourceTree = "<group>";
+		};
+		639CA37E2981536E005B1320 /* Pad Main Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				639CA37F29815401005B1320 /* TransactionsGridView.swift */,
+			);
+			path = "Pad Main Subviews";
+			sourceTree = "<group>";
+		};
+		639CA381298155A4005B1320 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				63857BBA297A71A300002EB2 /* Main View */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		639CA382298155B1005B1320 /* Pad */ = {
+			isa = PBXGroup;
+			children = (
+				639CA37D29812C56005B1320 /* Main Pad View */,
+			);
+			path = Pad;
 			sourceTree = "<group>";
 		};
 		63C1CF3A2977F372008F1C69 /* Extensions */ = {
@@ -115,7 +147,7 @@
 			children = (
 				63C1CF3A2977F372008F1C69 /* Extensions */,
 				63E927F42975281200A19263 /* Main */,
-				63E927F62975285B00A19263 /* Screens */,
+				63E927F62975285B00A19263 /* Devices */,
 				63E927F52975284C00A19263 /* DB */,
 				63E927FB2975288D00A19263 /* Resources */,
 				63E927E7297526E100A19263 /* Preview Content */,
@@ -149,18 +181,13 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
-		63E927F62975285B00A19263 /* Screens */ = {
+		63E927F62975285B00A19263 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				639CA37D29812C56005B1320 /* Main Pad View */,
-				63857BBA297A71A300002EB2 /* Main View */,
-				63020C332976BC4A0002F133 /* AddCardFormView.swift */,
-				63857BB6297A41B700002EB2 /* AddTransactionFormView.swift */,
-				63857BBF297EA57C00002EB2 /* CategoriesListView.swift */,
-				63A05E3E298010C700AD6B2F /* FilterSheetView.swift */,
-				63857BB8297A718E00002EB2 /* PhotoPickerView.swift */,
+				639CA382298155B1005B1320 /* Pad */,
+				639CA381298155A4005B1320 /* Phone */,
 			);
-			path = Screens;
+			path = Devices;
 			sourceTree = "<group>";
 		};
 		63E927FB2975288D00A19263 /* Resources */ = {
@@ -171,7 +198,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		63E927FC297539E500A19263 /* MainSubViews */ = {
+		63E927FC297539E500A19263 /* Main Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				63020C31297694290002F133 /* AddCardButton.swift */,
@@ -182,7 +209,7 @@
 				63857BB4297A3BDA00002EB2 /* PromptTransactionView.swift */,
 				63857BBB297AAD4E00002EB2 /* CardTransactionView.swift */,
 			);
-			path = MainSubViews;
+			path = "Main Subviews";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +293,7 @@
 				63857BB5297A3BDA00002EB2 /* PromptTransactionView.swift in Sources */,
 				63020C32297694290002F133 /* AddCardButton.swift in Sources */,
 				63857BBE297E5A0F00002EB2 /* UIImage+EXT.swift in Sources */,
+				639CA38029815401005B1320 /* TransactionsGridView.swift in Sources */,
 				639CA37C29812B78005B1320 /* iPad_MainView.swift in Sources */,
 				63A05E4129810B5D00AD6B2F /* DeviceIdiomView.swift in Sources */,
 				63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */,
