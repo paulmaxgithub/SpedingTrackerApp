@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-fileprivate var dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .none
-    return formatter
-}()
-
 struct CardTransactionView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -30,7 +23,7 @@ struct CardTransactionView: View {
                 VStack(alignment: .leading) {
                     Text(transaction.name ?? "")
                         .font(.headline)
-                    if let date = transaction.timestamp { Text(dateFormatter.string(from: date)) }
+                    if let date = transaction.timestamp { Text(DateFormatter.shortFormat.string(from: date)) }
                 }
                 Spacer()
                 VStack(alignment: .trailing) {

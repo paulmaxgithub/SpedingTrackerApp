@@ -15,7 +15,7 @@ struct iPad_MainView: View {
     private var cards: FetchedResults<Card>
     
     @State private var addCardFormShown = false
-    @State private var cardSelectedHash = -1
+    @State private var selectedCard: Card?
     
     var body: some View {
         NavigationView {
@@ -24,19 +24,22 @@ struct iPad_MainView: View {
                     HStack {
                         ForEach(cards) { _card in
                             CreditCardView(card: _card)
-                                .tag(_card.hash)
+                                .padding(.bottom, 15)
+                                .onTapGesture { withAnimation { selectedCard = _card } }
+                                .scaleEffect(selectedCard == _card ? 1.1 : 1)
+                                .onAppear { selectedCard = _card }
                         }
                     }
-                    .onAppear(perform:  { cardSelectedHash = cards.first?.hash ?? -1 })
+                    .padding()
                 }
                 
-                TransactionsGridView()
+                if let _card = selectedCard { TransactionsGridView(_card) }
             }
             .navigationTitle("Credit Cards")
             .navigationBarItems(trailing: AddCardButton(isPresented: $addCardFormShown))
             
             //SHEET
-            .sheet(isPresented: $addCardFormShown, content: { AddCardFormView { cardSelectedHash = $0.hash } })
+            .sheet(isPresented: $addCardFormShown, content: { AddCardFormView(didAddCard: nil) })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

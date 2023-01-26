@@ -17,6 +17,7 @@
 		63857BC0297EA57D00002EB2 /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63857BBF297EA57C00002EB2 /* CategoriesListView.swift */; };
 		639CA37C29812B78005B1320 /* iPad_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CA37B29812B78005B1320 /* iPad_MainView.swift */; };
 		639CA38029815401005B1320 /* TransactionsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CA37F29815401005B1320 /* TransactionsGridView.swift */; };
+		639CA3842982282B005B1320 /* DateFormatter+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CA3832982282A005B1320 /* DateFormatter+EXT.swift */; };
 		63A05E3F298010C700AD6B2F /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A05E3E298010C700AD6B2F /* FilterSheetView.swift */; };
 		63A05E4129810B5D00AD6B2F /* DeviceIdiomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */; };
 		63C1CF332977BDF4008F1C69 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1CF322977BDF4008F1C69 /* AddItemButton.swift */; };
@@ -43,6 +44,7 @@
 		63857BBF297EA57C00002EB2 /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
 		639CA37B29812B78005B1320 /* iPad_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPad_MainView.swift; sourceTree = "<group>"; };
 		639CA37F29815401005B1320 /* TransactionsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsGridView.swift; sourceTree = "<group>"; };
+		639CA3832982282A005B1320 /* DateFormatter+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+EXT.swift"; sourceTree = "<group>"; };
 		63A05E3E298010C700AD6B2F /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
 		63A05E4029810B5D00AD6B2F /* DeviceIdiomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdiomView.swift; sourceTree = "<group>"; };
 		63C1CF322977BDF4008F1C69 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				63C1CF3B2977F395008F1C69 /* UIColor+EXT.swift */,
 				63857BBD297E5A0E00002EB2 /* UIImage+EXT.swift */,
+				639CA3832982282A005B1320 /* DateFormatter+EXT.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				63E927EB297526E100A19263 /* Persistence.swift in Sources */,
 				63857BB7297A41B700002EB2 /* AddTransactionFormView.swift in Sources */,
+				639CA3842982282B005B1320 /* DateFormatter+EXT.swift in Sources */,
 				63857BBC297AAD4E00002EB2 /* CardTransactionView.swift in Sources */,
 				63E927EE297526E100A19263 /* SpedingTrackerApp.xcdatamodeld in Sources */,
 				63857BC0297EA57D00002EB2 /* CategoriesListView.swift in Sources */,
